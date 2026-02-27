@@ -13,9 +13,9 @@ STEPS_PER_EPOCH=500
 BATCH_SIZE=6
 PATCH_SIZE=512
 
-LR=2e-4
-WEIGHT_DECAY=1e-4
-NUM_WORKERS=2
+LR=3e-5
+WEIGHT_DECAY=1e-5
+NUM_WORKERS=4
 
 # UNet
 BASE_CHANNELS=32
@@ -74,4 +74,6 @@ python -m src.train_teacher \
   --max_val_images "${MAX_VAL_IMAGES}" \
   ${AMP} \
   --amp_dtype "${AMP_DTYPE}" \
-  --grad_clip "${GRAD_CLIP}"
+  --grad_clip "${GRAD_CLIP}" \
+  --use_focal
+  --pos_weight 10 \
